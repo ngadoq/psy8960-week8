@@ -24,9 +24,9 @@ library(tidyverse)
 ```
 
 # Data Import and Cleaning
-what that chunk does and why you chose to do it that way
+Import data, convert time data to standard format, convert variables to factor format and reverse code q5, filter q6 to remove cases failed manipulation check.
 ```{r}
-week8_tbl <-  read.csv(file = "data/week3.csv") |>
+week8_tbl <-  read.csv(file = "../data/week3.csv") |>
   mutate(timeStart = ymd_hms(timeStart),
          timeEnd = ymd_hms(timeStart),
          gender = factor(gender, levels=c("M","F"),
@@ -60,9 +60,14 @@ cor.test(week8_tbl$mean_q1_q6, week8_tbl$mean_q8_q10)
 ```
 
 # Data Export
-
+Export data for shiny, only keep necessary variables
 ```{r}
 shiny_tbl <- week8_tbl %>% 
   select(timeEnd, gender, mean_q1_q6, mean_q8_q10)
+```
+
+```{r}
+# Render to out folder
+rmarkdown::render("week8.Rmd", output_file = "../out/week8.html")
 ```
 
