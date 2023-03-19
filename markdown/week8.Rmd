@@ -38,7 +38,7 @@ week8_tbl <-  read.csv(file = "../data/week3.csv") |>
 ```
 
 # Visualization
-what that chunk does and why you chose to do it that way
+Mutate to create two variables for mean q1-q6 and mean q8-q10 and create a scatter plot of the relationship between mean score q1-q6 and mean score q8-q10
 ```{r echo=FALSE,message=FALSE}
 week8_tbl %>% select(q1:q6)
 (week8_tbl <-  week8_tbl %>% 
