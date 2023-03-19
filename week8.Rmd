@@ -35,20 +35,29 @@ week8_tbl <-  read.csv(file = "data/week3.csv") |>
                            labels=c("Block A", "Block B", "Control")),
          q5= 6 - q5) |> 
   dplyr::filter(q6 == 1)
-  ```
+```
 
 # Visualization
-```{r message=FALSE}
+what that chunk does and why you chose to do it that way
+```{r echo=FALSE,message=FALSE}
 week8_tbl %>% select(q1:q6)
-week8_tbl %>% 
+(week8_tbl <-  week8_tbl %>% 
   mutate(mean_q1_q6 = rowMeans(select(., q1:q6)),
-         mean_q8_q10 = rowMeans(select(., q8:q10))) %>% 
+         mean_q8_q10 = rowMeans(select(., q8:q10)))) %>% 
   ggplot(aes(x=mean_q1_q6, y=mean_q8_q10)) + 
   geom_jitter() + 
   geom_smooth(method = "lm", color = "purple") +
   labs(x="Mean q1-q6",
-       y="Mean q8-q10")
-           
-
+       y="Mean q8-q10",
+       title = "Scatterplot of mean q1-q6 and mean q8-q10")
 ```
+
+# Analysis
+Correlation between mean score of q1-q6 and mean score of q8-q10 is `r cor.test(week8_tbl$mean_q1_q6, week8_tbl$mean_q8_q10)[["estimate"]][["cor"]]`. p > .05 so the relationship between the two mean scores are not significantly different from 0.
+
+```{r echo=FALSE}
+cor.test(week8_tbl$mean_q1_q6, week8_tbl$mean_q8_q10)
+```
+
+
 
