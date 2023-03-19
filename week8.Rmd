@@ -23,3 +23,32 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(tidyverse)
 ```
 
+# Data Import and Cleaning
+what that chunk does and why you chose to do it that way
+```{r}
+week8_tbl <-  read.csv(file = "data/week3.csv") |>
+  mutate(timeStart = ymd_hms(timeStart),
+         timeEnd = ymd_hms(timeStart),
+         gender = factor(gender, levels=c("M","F"),
+                         labels = c("Male","Female")),
+         condition=factor(condition, levels=c("A", "B", "C"),
+                           labels=c("Block A", "Block B", "Control")),
+         q5= 6 - q5) |> 
+  dplyr::filter(q6 == 1)
+  ```
+
+# Visualization
+```{r message=FALSE}
+week8_tbl %>% select(q1:q6)
+week8_tbl %>% 
+  mutate(mean_q1_q6 = rowMeans(select(., q1:q6)),
+         mean_q8_q10 = rowMeans(select(., q8:q10))) %>% 
+  ggplot(aes(x=mean_q1_q6, y=mean_q8_q10)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm", color = "purple") +
+  labs(x="Mean q1-q6",
+       y="Mean q8-q10")
+           
+
+```
+
