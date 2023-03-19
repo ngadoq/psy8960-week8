@@ -64,7 +64,7 @@ Export data for shiny, only keep necessary variables
 ```{r}
 shiny_tbl <- week8_tbl %>% 
   select(timeEnd, gender, mean_q1_q6, mean_q8_q10) %>% 
-  saveRDS("../shiny/shiny.rds")
+  saveRDS("../shiny/shiny_week8/shiny.rds")
 ```
 
 ```{r}
