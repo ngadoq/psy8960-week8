@@ -59,5 +59,10 @@ Correlation between mean score of q1-q6 and mean score of q8-q10 is `r cor.test(
 cor.test(week8_tbl$mean_q1_q6, week8_tbl$mean_q8_q10)
 ```
 
+# Data Export
 
+```{r}
+shiny_tbl <- week8_tbl %>% 
+  select(timeEnd, gender, mean_q1_q6, mean_q8_q10)
+```
 
