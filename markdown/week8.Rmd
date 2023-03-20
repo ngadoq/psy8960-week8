@@ -5,13 +5,14 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{=html}
+
 <style>
 h4.date {
   font-style: italic;
 }
 </style>
-```
+
+
 # Reproducible Image and Online Resources
 
 An image of this project as of date can be accessed by [clicking this link](https://mybinder.org/v2/gh/ngadoq/psy8960-week8.git/HEAD?urlpath=rstudio).  
@@ -76,7 +77,6 @@ shiny_tbl <- week8_tbl %>%
 ```
 
 
-```{r include=FALSE}
-# Export html to out folder
-rmarkdown::render("week8.rmd", output_file = "../out/week8.html")
+```{r}
+rmarkdown::render("week8.Rmd", output_file = "../out/week8.html")
 ```
