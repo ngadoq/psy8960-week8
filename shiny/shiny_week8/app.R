@@ -55,3 +55,8 @@ server <- function(input, output, session) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
+rsconnect::setAccountInfo(name='axf4o3-nga-do', token='D59DC787825A7BFA1E2A9F9917103A1A', secret='KXY7Y+hdstC0p+nLzDdzjMQreLvnCNgMXUwNDzas')
+
+library(rsconnect)
+deployApp("~/psy8960-week8/shiny/shiny_week8")
